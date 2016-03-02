@@ -1,0 +1,4 @@
+Utworzyæ plik tekstowy liczby.txt z zawartoœci¹ 5, -5, 0, 17, -134, ... (jedna linia, jedna liczba) 
+i wypisaæ na ekranie w kodzie U2(kody 32-bitowe/ jak bêdzie brakowaæ uzupe³nic zerami). 
+(zrobiæ jak najprostszym sposobem w jêzyku C) - wys³aæ na moodla. negacja bitów plus 1.
+Termin: 05.03.2016 godzina 10:00
