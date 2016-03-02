@@ -14,11 +14,11 @@ int main(){
   else {
     int j;
     int cyfry = 0;
-
     for (j = 0; j < 12; j++) {
       fscanf(plik, "%i", &cyfry);                         // wczytywanie liczb z pliku do tablicy "cyfry"
-      if(!cyfry) {
-        printf("W pliku znajduje sie nie dozwolone znaki, prosze popraw to.\n");
+      if(!cyfry) {                                        // obsluga niedozwolonych znakow
+        printf("W pliku znajduja sie nie dozwolone znaki, prosze popraw to.\n");
+        printf("Koncze dzialanie programu.\n\n");
         break;
       }
       printf("%d\t ", cyfry);
@@ -27,6 +27,7 @@ int main(){
     }
     fclose(plik);                                         // zamykanie pliku
   }
+  return 0;
 }
 
 void toBinary(long liczba_dziesietna)                     // zamiana na kod U2(32-bitowy)
