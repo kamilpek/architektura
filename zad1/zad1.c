@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define LEAD_BIT 32
+#define liczba_bitow 32
 
 void toBinary(long);
 
@@ -14,33 +14,24 @@ int main(){
   }
   else {
     int j;
-    int bufor_liczb[12];
-    int cyfry[12];
-    int cyferki;
-    long int binarki;
-    long int binarne[12];
-    for (j = 0; j < 12; j++) cyfry[j] = 0;            // czyszczenie tablicy
-    for (j = 0; j < 12; j++) binarne[j] = 0;            // czyszczenie tablicy
-
-    long liczba_plik_binarna = 0;
+    int cyfry;
 
     for (j = 0; j < 12; j++) {                        // wczytywanie liczb z pliku do tablicy
-      fscanf(plik, "%i", &cyferki);
-      printf("%d\t ", cyferki);
-      toBinary(cyferki);
+      fscanf(plik, "%i", &cyfry);
+      printf("%d\t ", cyfry);
+      toBinary(cyfry);
     }
-
     fclose(plik);
   }
 }
 
-void toBinary(long decimal_number)                    // zamiana na binarne
+void toBinary(long liczba_dziesietna)                    // zamiana na binarne
 {
   int i;
 
-  for(i = 0; i < LEAD_BIT; i++)
+  for(i = 0; i < liczba_bitow; i++)
   {
-    printf("%ld", (decimal_number >> (LEAD_BIT - (i + 1))) & 0x1);
+    printf("%ld", (liczba_dziesietna >> (liczba_bitow - (i + 1))) & 0x1);
   }
   printf("\n");
 }
