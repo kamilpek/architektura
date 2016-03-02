@@ -1,7 +1,12 @@
 #include <stdio.h>
 #define liczba_bitow 32                                  // definicja liczby bitow dla funkcji toBinary
 
-void toBinary(long);                                     // deklaracja funkcji toBinary
+void toBinary(long liczba_dziesietna)                     // zamiana na kod U2(32-bitowy)
+{
+  int i;
+  for(i = 0; i < liczba_bitow; i++) printf("%ld", (liczba_dziesietna >> (liczba_bitow - (i + 1))) & 0x1);
+  printf("\n");
+}
 
 int main(){
   FILE *plik = NULL;
@@ -14,8 +19,9 @@ int main(){
   else {
     int j;
     int cyfry = 0;
-    for (j = 0; j < 12; j++) {
+    while(1) {                                            // wieczny while
       fscanf(plik, "%i", &cyfry);                         // wczytywanie liczb z pliku do tablicy "cyfry"
+      if(feof(plik) != 0) break;                          // konczenie petli jak skonczy sie zawartosc pliku
       if(!cyfry) {                                        // obsluga niedozwolonych znakow
         printf("W pliku znajduja sie nie dozwolone znaki, prosze popraw to.\n");
         printf("Koncze dzialanie programu.\n\n");
@@ -28,11 +34,4 @@ int main(){
     fclose(plik);                                         // zamykanie pliku
   }
   return 0;
-}
-
-void toBinary(long liczba_dziesietna)                     // zamiana na kod U2(32-bitowy)
-{
-  int i;
-  for(i = 0; i < liczba_bitow; i++) printf("%ld", (liczba_dziesietna >> (liczba_bitow - (i + 1))) & 0x1);
-  printf("\n");
 }
