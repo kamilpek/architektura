@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define LEAD_BIT 8
+#define LEAD_BIT 32
 
 void toBinary(long);
 
