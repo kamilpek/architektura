@@ -1,3 +1,6 @@
+// Zamana liczb całkowitych zapisanych w systemie dziesiętnym na ich kod U2.
+// Autor: Kamil Pek 231050. Data: 04.03.2016.
+
 #include <stdio.h>
 #define liczba_bitow 32                                    // definicja liczby bitow dla funkcji toBinary
 
