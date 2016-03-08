@@ -2,6 +2,7 @@
 // Autor: Kamil Pek 231050. Data: 08.03.2016.
 
 #include <stdio.h>
+#include <stdlib.h>
 
 void kodowanie_32(float f, char argument[])                                  // zamiana na kod IEEE 754
 {
@@ -39,7 +40,10 @@ int main(int argc, char *argv[]){
         printf("W pliku znajduja sie nie dozwolone znaki, prosze popraw to.\n Koncze dzialanie programu.\n");
         break;
       }
-      kodowanie_32(liczby, argv[3]);
+      int argument = atoi(argv[2]);
+      if(argument == 32) kodowanie_32(liczby, argv[3]);
+      else if (argument == 64) printf ("Pracujemy nad tym\n");
+      else printf("Prosze podac prawidlowe parametry");
       }
       liczby = 0;
     }
