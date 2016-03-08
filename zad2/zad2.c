@@ -3,10 +3,10 @@
 
 #include <stdio.h>
 
-void kodowanie_32(float f)                                  // zamiana na kod IEEE 754
+void kodowanie_32(float f, char argument[])                                  // zamiana na kod IEEE 754
 {
   FILE *wynik = NULL;
-  wynik = fopen("wynik.txt", "a");
+  wynik = fopen(argument, "a");
   fprintf(wynik, "%f\t", f);
   unsigned cher;
   int i;
@@ -21,9 +21,9 @@ void kodowanie_32(float f)                                  // zamiana na kod IE
   fprintf(wynik, "\n");
 }
 
-int main(){
+int main(int argc, char *argv[]){
   FILE *plik = NULL;
-  plik = fopen("plik.txt", "r");                           // otwarcie pliku tekstowego w trybie czytania
+  plik = fopen(argv[1], "r");                              // otwarcie pliku tekstowego w trybie czytania
 
   if (plik == NULL){                                       // sprawdzanie istnienia pliku
     printf("Otwarcie pliku sie nie powiodlo!\n");
@@ -36,14 +36,13 @@ int main(){
       fscanf(plik, "%f", &liczby);                         // wczytywanie liczb z pliku do tablicy "cyfry"
       if(feof(plik) != 0) break;                           // konczenie petli jak skonczy sie zawartosc pliku
       if(!liczby) {                                        // obsluga niedozwolonych znakow
-        printf("W pliku znajduja sie nie dozwolone znaki, prosze popraw to.\n");
-        printf("Koncze dzialanie programu.\n\n");
+        printf("W pliku znajduja sie nie dozwolone znaki, prosze popraw to.\n Koncze dzialanie programu.\n");
         break;
       }
-      kodowanie_32(liczby);
+      kodowanie_32(liczby, argv[3]);
+      }
       liczby = 0;
     }
     fclose(plik);                                          // zamykanie pliku
-  }
   return 0;
 }

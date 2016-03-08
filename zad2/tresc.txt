@@ -1,0 +1,11 @@
+Napisać program w języku ANSI C umożliwiający zamianę liczb rzeczywistych zapisanych w systemie dziesiętnym na ich reprezentację w formacie IEEE 754 na 32-bitach lub 64-bitach.
+
+Wywołanie programu nr 1:
+./program  liczby.txt  32  wyniki.txt
+Program powinien odczytać liczby rzeczywiste z pliku liczby.txt i zapisać je do pliku wyniki.txt w formacie IEEE 754 na 32-bitach.
+
+Wywołanie programu nr 2:
+./program  liczby.txt  64  wyniki.txt
+Program powinien odczytać liczby rzeczywiste z pliku liczby.txt i zapisać je do pliku wyniki.txt w formacie IEEE 754 na 64-bitach.
+
+Program powinien być idiotoodporny.
