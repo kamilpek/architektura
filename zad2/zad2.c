@@ -1,17 +1,23 @@
 // Zamana liczb zmiennoprzecinkowych na kod IEEE 754
-// Autor: Kamil Pek 231050. Data: 04.03.2016.
+// Autor: Kamil Pek 231050. Data: 08.03.2016.
 
 #include <stdio.h>
-#define liczba_bitow 32                                    // definicja liczby bitow dla funkcji toBinary
 
-void kodowanie(int liczba_dziesietna)                      // zamiana na kod U2(32-bitowy)
+void kodowanie_32(float f)                                  // zamiana na kod IEEE 754
 {
   FILE *wynik = NULL;
   wynik = fopen("wynik.txt", "a");
+  fprintf(wynik, "%f\t", f);
+  unsigned cher;
   int i;
-  for(i = 0; i < liczba_bitow; i++) {
-    fprintf(wynik, "%d", (liczba_dziesietna >> (liczba_bitow - (i + 1))) & 1);
-  }
+  unsigned mask = 1<<31 ;
+
+  cher =*(unsigned*)&f;
+  for (i=0;i<32;i++)
+  	{
+    fputc((mask & cher? '1' : '0' ), wynik);
+  	cher <<=1;
+  	}
   fprintf(wynik, "\n");
 }
 
@@ -34,7 +40,7 @@ int main(){
         printf("Koncze dzialanie programu.\n\n");
         break;
       }
-      kodowanie(liczby);
+      kodowanie_32(liczby);
       liczby = 0;
     }
     fclose(plik);                                          // zamykanie pliku
