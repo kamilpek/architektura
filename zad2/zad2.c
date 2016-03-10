@@ -1,5 +1,5 @@
 // Zamana liczb zmiennoprzecinkowych na kod IEEE 754
-// Autor: Kamil Pek 231050. Data: 08.03.2016.
+// Autor: Kamil Pek 231050. Data: 10.03.2016.
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,15 +9,13 @@ void kodowanie_32(float f, char argument[])                                  // 
   FILE *wynik = NULL;
   wynik = fopen(argument, "a");
   fprintf(wynik, "%f\t", f);
-  unsigned cher;
   int i;
-  unsigned mask = 1<<31 ;
-
-  cher =*(unsigned*)&f;
+  unsigned a =*(unsigned*)&f;
+  unsigned b = 1<<31 ;
   for (i=0;i<32;i++)
   	{
-    fputc((mask & cher? '1' : '0' ), wynik);
-  	cher <<=1;
+    fputc((a & b? '1' : '0' ), wynik);
+  	a <<= 1;
   	}
   fprintf(wynik, "\n");
 }
